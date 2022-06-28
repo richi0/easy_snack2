@@ -21,7 +21,6 @@ SETTINGS_DIR = Path(BASE_DIR, "django_project")
 ENV = Path(SETTINGS_DIR, ".env")
 
 if ENV.exists():
-    print(ENV)
     load_dotenv(ENV)
 
 
@@ -54,10 +53,12 @@ INSTALLED_APPS = [
     "pages.apps.PagesConfig",
     "blog.apps.BlogConfig",
     "forms.apps.FormsConfig",
+    'storages',
 ]
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
+    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -79,6 +80,7 @@ TEMPLATES = [
                 "django.template.context_processors.request",
                 "django.contrib.auth.context_processors.auth",
                 "django.contrib.messages.context_processors.messages",
+                "django.template.context_processors.media"
             ],
         },
     },
@@ -91,13 +93,13 @@ WSGI_APPLICATION = "django_project.wsgi.application"
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
 DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'db.db',
+    "default": {
+        "ENGINE": "django.db.backends.sqlite3",
+        "NAME": "db.db",
     }
 }
 
-DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
+DEFAULT_AUTO_FIELD = "django.db.models.AutoField"
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -136,11 +138,18 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = "/static/"
-STATICFILES_DIRS = [os.path.join(BASE_DIR, "static")]
-STATIC_ROOT = os.path.join(BASE_DIR, "staticfiles")
-
-MEDIA_URL = "/media/"
+STATICFILES_DIRS = [BASE_DIR / "static"]
+STATIC_ROOT = BASE_DIR / "staticfiles"
 MEDIA_ROOT = BASE_DIR / "mediafiles"
+
+if DEBUG:
+    MEDIA_URL = "/media/"
+else:
+    AWS_LOCATION = 'static'
+    MEDIA_URL = os.environ.get('AWS_S3_BUCKET_DOMAIN')
+    DEFAULT_FILE_STORAGE = 'django_project.custom_storage.MediaStorage'
+    AWS_S3_SIGNATURE_VERSION = 's3v4'
+    AWS_S3_ADDRESSING_STYLE = 'virtual'
 
 # Sites framework
 SITE_ID = 1
