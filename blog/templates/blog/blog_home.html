@@ -1,0 +1,65 @@
+{% extends 'pages/_base.html' %} {% load static %} {% block content %}
+<div>
+  {% include "pages/components/carousell.html" %} {% for article in page_obj %}
+  <div
+    onclick="window.location='{{ article.get_absolute_url }}';"
+    class="hover:shadow-xl block cursor-pointer max-w-3xl ml-auto mr-auto bg-white rounded"
+  >
+    <div class="home-post shadow rounded p-4 mb-5 sm:mb-10">
+      <p class="text-3xl mb-5 text-green-700" id="article_title{{article.id}}">
+        {{ article.title }}
+      </p>
+      <p class="text-gray-500 mb-5">
+        by {{article.author}} on {{ article.publish_on|date:"D d M Y" }}
+      </p>
+      <div class="grid-temp">
+        <img
+          class="w-full object-contain max-h-96 rounded-md"
+          src="/media/{{ article.image }}"
+          alt="article_image"
+        />
+        <div class="article_link flex flex-col">
+          <p class="mb-3">{{ article.preface|safe|linebreaksbr }}</p>
+          <div class="hidden md:block text-right ml-auto mt-auto">
+            <p class="font-bold">Snacks:
+              {% with ''|center:article.snacks as range %}
+              {% for _ in range %}
+                  <img class="w-8 h-8 inline" src="{% static '/images/snacks.png' %}" alt="snack"/>
+              {% endfor %}
+              {% endwith %} 
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+  {% if paginator.num_pages > 1 %}
+  <div class="text-center font-bold text-green-700">
+    <span>
+        {% if page_obj.has_previous %}
+            <a href="?page={{ page_obj.previous_page_number }}">← Previous | </a>
+        {% endif %}
+        <span>
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}
+        </span>
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">| Next →</a>
+        {% endif %}
+    </span>
+  </div>
+  {% endif %}
+</div>
+<style>
+  .grid-temp {
+    display: grid;
+    gap: 20px;
+    grid-template-columns: 30% auto;
+  }
+  @media only screen and (max-width: 600px) {
+    .grid-temp {
+      grid-template-columns: auto;
+    }
+  }
+</style>
+{% endblock content %}

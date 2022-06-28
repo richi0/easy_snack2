@@ -1,0 +1,19 @@
+{% extends 'pages/_base.html' %} {% load static %} {% block content %}
+<div>
+  {% include "pages/components/carousell.html" %}
+  <p class="text-2xl text-center mb-5">All the cities we visited</p>
+  <div class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 justify-items-center gap-5">
+    {% for city in object_list %}
+    {% if city.is_in_published_article %}
+    <div class="space-y-3 border border-green-700 p-3 rounded-lg sm:w-full">
+      <a class="text-2xl text-green-700 underline" href="{{ city.get_absolute_url }}">{{ city.name }}</a>
+      <p>
+        Country: <a class="text-green-700 underline" href="{{ city.country.get_absolute_url }}">{{ city.country.name }}</a>
+      </p>
+      <p>Number of Posts: {{city.get_posts|length}}</p>
+    </div>
+    {% endif %}
+    {% endfor %}
+  </div>
+</div>
+{% endblock content %}

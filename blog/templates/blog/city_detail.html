@@ -1,0 +1,19 @@
+{% extends 'pages/_base.html' %} {% load static %} {% block content %}
+<p class="text-2xl text-center">{{ city.name }}</p>
+<p class="text-center">
+  Country:
+  <a class="text-green-700 underline" href="{{ city.country.get_absolute_url }}">
+    {{ city.country.name }}
+  </a>
+</p>
+{% include "blog/components/image.html" with image=city %}
+<p>{{ city.description }}</p>
+<p class="text-xl font-bold my-3">Posts:</p>
+<div class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 justify-items-center gap-5">
+  {% for post in city.get_posts %}
+  <a class="w-full border border-green-700 p-3 rounded-lg text-center flex items-center" href="{{ post.get_absolute_url }}">
+    <p class="text-xl mx-auto">{{ post.title }}</p>
+  </a>
+  {% endfor %}
+</div>
+{% endblock content %}
