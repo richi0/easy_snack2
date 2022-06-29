@@ -11,18 +11,16 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 
 import os
+import json
 from pathlib import Path
-from dotenv import load_dotenv
+from scripts.read_env import read_env
+
 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-SETTINGS_DIR = Path(BASE_DIR, "django_project")
-ENV = Path(SETTINGS_DIR, ".env")
-
-if ENV.exists():
-    load_dotenv(ENV)
-
+ENV = Path(BASE_DIR, ".env.json")
+read_env(ENV)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
