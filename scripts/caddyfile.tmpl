@@ -6,6 +6,7 @@ $host$ {
     reverse_proxy 127.0.0.1:7000
     handle_path /static/* {
         encode gzip
+        header Cache-Control max-age=5184000
         file_server {
             root staticfiles
         }
@@ -13,6 +14,7 @@ $host$ {
 
     handle_path /media/* {
         encode gzip
+        header Cache-Control max-age=5184000
         file_server {
             root mediafiles
         }
