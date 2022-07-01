@@ -14,6 +14,6 @@ bind = "0.0.0.0:7000"
 workers = 4
 accesslog = "-"
 
-if os.environ.get("PRODUCTION") == "True":
+if os.environ.get("STAGE") == "PRODUCTION":
     keyfile = "private.key"
     certfile = "selfsigned.crt"

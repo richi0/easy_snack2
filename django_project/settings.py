@@ -56,7 +56,6 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     "django.middleware.security.SecurityMiddleware",
-    "whitenoise.middleware.WhiteNoiseMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
     "django.middleware.csrf.CsrfViewMiddleware",
@@ -145,7 +144,6 @@ if DEBUG:
 else:
     AWS_LOCATION = 'static'
     MEDIA_URL = os.environ.get('AWS_S3_BUCKET_DOMAIN')
-    DEFAULT_FILE_STORAGE = 'django_project.custom_storage.MediaStorage'
     AWS_S3_SIGNATURE_VERSION = 's3v4'
     AWS_S3_ADDRESSING_STYLE = 'virtual'
 

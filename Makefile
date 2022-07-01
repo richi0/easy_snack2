@@ -34,3 +34,5 @@ caddy:
 	cd caddy
 	wget https://github.com/caddyserver/caddy/releases/download/v2.5.1/caddy_2.5.1_linux_amd64.tar.gz -O caddy/caddy.tar.gz
 	tar -xvf caddy/caddy.tar.gz --directory=caddy
+	python scripts/write_caddy_file.py
+	sudo caddy/caddy run --config caddy/Caddyfile
