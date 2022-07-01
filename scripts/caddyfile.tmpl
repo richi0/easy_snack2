@@ -1,8 +1,20 @@
-$host$
-reverse_proxy 127.0.0.1:7000
-handle_path /static/* {
-    encode gzip
-    file_server {
-        root staticfiles
+www.$host$ {
+    redir https://$host${uri}
+}
+
+$host$ {
+    reverse_proxy 127.0.0.1:7000
+    handle_path /static/* {
+        encode gzip
+        file_server {
+            root staticfiles
+        }
+    }
+
+    handle_path /media/* {
+        encode gzip
+        file_server {
+            root mediafiles
+        }
     }
 }

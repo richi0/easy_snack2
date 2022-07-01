@@ -137,15 +137,9 @@ USE_TZ = True
 STATIC_URL = "/static/"
 STATICFILES_DIRS = [BASE_DIR / "static"]
 STATIC_ROOT = BASE_DIR / "staticfiles"
-MEDIA_ROOT = BASE_DIR / "mediafiles"
 
-if DEBUG:
-    MEDIA_URL = "/media/"
-else:
-    AWS_LOCATION = 'static'
-    MEDIA_URL = os.environ.get('AWS_S3_BUCKET_DOMAIN')
-    AWS_S3_SIGNATURE_VERSION = 's3v4'
-    AWS_S3_ADDRESSING_STYLE = 'virtual'
+MEDIA_ROOT = BASE_DIR / "mediafiles"
+MEDIA_URL = "/media/"
 
 # Sites framework
 SITE_ID = 1
