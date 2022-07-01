@@ -9,12 +9,12 @@ migrate:
 	python manage.py migrate
 migrate_media:
 	python manage.py migrate_media_to_s3
-dev: static
-	python manage.py runserver 0.0.0.0:7000
-server: static
-	python -m gunicorn django_project.wsgi
-static:
+dev:
 	python manage.py collectstatic --noinput
+	python manage.py runserver 0.0.0.0:7000
+server:
+	python manage.py collectstatic --noinput
+	python -m gunicorn django_project.wsgi
 restore:
 	python manage.py restore
 superuser:
@@ -25,6 +25,12 @@ cert:
 	sudo .venv/bin/certbot certonly \
 		 --standalone \
 		 --preferred-challenges http \
-		 -d example.com \
+		 -d snackeroo.info \
+		 -d www.snackeroo.info \
 		 --register-unsafely-without-email \
 		 --agree-tos
+caddy:
+	mkdir -p caddy
+	cd caddy
+	wget https://github.com/caddyserver/caddy/releases/download/v2.5.1/caddy_2.5.1_linux_amd64.tar.gz -O caddy/caddy.tar.gz
+	tar -xvf caddy/caddy.tar.gz --directory=caddy
