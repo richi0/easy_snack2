@@ -23,10 +23,11 @@ serve_dev:
 serve_prod:
 	(\
 		source .venv/bin/activate ;\
-		python manage.py collectstatic --noinput ;\
-		python -m gunicorn -D django_project.wsgi ;\
-		sudo caddy/caddy run --config caddy/Caddyfile ;\
-		pkill -f gunicorn ;\
+		python scripts/register_systemd.py ;\
+		systemctl enable --now gunicorn.service ;\
+		systemctl enable --now caddy.service ;\
+		systemctl status gunicorn.service ;\
+		systemctl status caddy.service ;\
 	)
 restore:
 	python manage.py restore

@@ -10,13 +10,11 @@ GUNICORN_OUTPUT = Path("/etc/systemd/system/gunicorn.service")
 
 def write_file():
     gunicorn = GUNICORN_INPUT.read_text()
-    gunicorn = gunicorn.replace("$command$", f"{INTERPRETER} -m gunicorn django_project.wsgi")
-    print(gunicorn)
+    gunicorn = gunicorn.replace("$command$", f"{INTERPRETER} -m gunicorn -c {Path(ROOT, 'gunicorn.conf.py')} --chdir {Path(ROOT)} django_project.wsgi")
     GUNICORN_OUTPUT.write_text(gunicorn)
     caddy = CADDY_INPUT.read_text()
     caddy = caddy.replace("$command$", f"{Path(ROOT, 'caddy/caddy')} run --config {Path(ROOT, 'caddy/Caddyfile')}")
     CADDY_OUTPUT.write_text(caddy)
-    print(caddy)
 
 if __name__ == "__main__":
     write_file()
