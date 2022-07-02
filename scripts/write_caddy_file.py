@@ -14,6 +14,7 @@ def write_file(env_path: Path):
         tmpl = tmpl.replace('$host$', 'snackeroo.info')
     else:
         tmpl = tmpl.replace('$host$', 'localhost')
+    tmpl = tmpl.replace("$root$", str(ROOT))
     output_path.write_text(tmpl)
 
 if __name__ == "__main__":

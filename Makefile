@@ -22,12 +22,14 @@ serve_dev:
 	)
 serve_prod:
 	(\
+		systemctl stop gunicorn.service ;\
+		systemctl stop caddy.service ;\
 		source .venv/bin/activate ;\
 		python scripts/register_systemd.py ;\
 		systemctl enable --now gunicorn.service ;\
 		systemctl enable --now caddy.service ;\
-		systemctl status gunicorn.service ;\
-		systemctl status caddy.service ;\
+		systemctl restart gunicorn.service ;\
+		systemctl restart caddy.service ;\
 	)
 restore:
 	python manage.py restore
