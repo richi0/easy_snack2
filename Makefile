@@ -26,6 +26,7 @@ serve_prod:
 		python manage.py collectstatic --noinput ;\
 		python -m gunicorn -D django_project.wsgi ;\
 		sudo caddy/caddy run --config caddy/Caddyfile ;\
+		pkill -f gunicorn ;\
 	)
 restore:
 	python manage.py restore
