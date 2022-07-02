@@ -1,14 +1,16 @@
 {% extends 'pages/_base.html' %} {% load static %} {% block content %}
-<p class="text-2xl text-center">{{ country.name }}</p>
-{% include "blog/components/image.html" with image=country %}
-<p>{{ country.description }}</p>
-<p class="text-xl font-bold my-3 ">Cities:</p>
-<div class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 justify-items-center gap-5">
-	{% for city in country.get_cities %}
-	<a class="w-full text-center border border-green-700 p-3 rounded-lg" href="{{city.get_absolute_url}}">
-		<p class="text-xl">{{ city.name }}</p>
-		<p>Number of Posts: {{ city.get_posts|length }}</p>
-	</a>
-	{% endfor %}
+<div class="bg-white rounded p-4">
+	<p class="text-2xl text-center">{{ country.name }}</p>
+	{% include "blog/components/image.html" with image=country %}
+	<p>{{ country.description }}</p>
+	<p class="text-xl font-bold my-3 ">Cities:</p>
+	<div class="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-4 justify-items-center gap-5">
+		{% for city in country.get_cities %}
+		<a class="w-full text-center border border-green-700 p-3 rounded-lg" href="{{city.get_absolute_url}}">
+			<p class="text-xl">{{ city.name }}</p>
+			<p>Number of Posts: {{ city.get_posts|length }}</p>
+		</a>
+		{% endfor %}
+	</div>
 </div>
 {% endblock content %}

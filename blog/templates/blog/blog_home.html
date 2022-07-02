@@ -1,6 +1,7 @@
 {% extends 'pages/_base.html' %} {% load static %} {% block content %}
 <div>
-  {% include "pages/components/carousell.html" %} {% for article in page_obj %}
+  {% include "pages/components/carousell.html" %} 
+  {% for article in page_obj %}
   <div
     onclick="window.location='{{ article.get_absolute_url }}';"
     class="hover:shadow-xl block cursor-pointer max-w-3xl ml-auto mr-auto bg-white rounded"

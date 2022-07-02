@@ -1,33 +1,35 @@
 {% extends 'pages/_base.html' %} {% load static %} {% block content %}
 <div>
   {% include "pages/components/carousell.html" %}
-  <p class="my-2">
-    Welcome to Easy Snack! A travel and eating blog brought to you by Amby and
-    Sev. We started this blog because I (Amby) like to write, Sev likes to
-    develop websites, and we both like to travel together and eat. A few things
-    you should know about us:
-  </p>
-  <ul class="list-disc list-inside my-2 ml-8">
-    <li>We eat everything</li>
-    <li>We go wherever looks interesting</li>
-    <li>
-      We are not food experts but we think we have pretty good judgement on what
-      makes a good dining experience
-    </li>
-    <li>We don't go anywhere twice. Unless it's really good.</li>
-    <li>Sometimes we'll writing about doing things that aren't food related</li>
-    <li>We don't do sponsorships and don't make money off of this blog</li>
-  </ul>
-  <p class="text-xl text-green-700 font-bold">
-    Happy snacking!
-  </p>
-  <div class="mt-10">
-    <p class="text-center text-2xl text-green-700">Contact us</p>
-    <p class="text-center font-bold text-gray-500 mb-5">
-      If you have any questions or comments please don't hesitate to contact us.
+  <div class="bg-white rounded p-4">
+    <p class="my-2">
+      Welcome to Easy Snack! A travel and eating blog brought to you by Amby and
+      Sev. We started this blog because I (Amby) like to write, Sev likes to
+      develop websites, and we both like to travel together and eat. A few things
+      you should know about us:
     </p>
-    {% url 'create_contact' as action %} 
-    {% include "forms/components/form.html" with action=action form=form %}
+    <ul class="list-disc list-inside my-2 ml-8">
+      <li>We eat everything</li>
+      <li>We go wherever looks interesting</li>
+      <li>
+        We are not food experts but we think we have pretty good judgement on what
+        makes a good dining experience
+      </li>
+      <li>We don't go anywhere twice. Unless it's really good.</li>
+      <li>Sometimes we'll writing about doing things that aren't food related</li>
+      <li>We don't do sponsorships and don't make money off of this blog</li>
+    </ul>
+    <p class="text-xl text-green-700 font-bold">
+      Happy snacking!
+    </p>
+    <div class="mt-10">
+      <p class="text-center text-2xl text-green-700">Contact us</p>
+      <p class="text-center font-bold text-gray-500 mb-5">
+        If you have any questions or comments please don't hesitate to contact us.
+      </p>
+      {% url 'create_contact' as action %} 
+      {% include "forms/components/form.html" with action=action form=form %}
+    </div>
   </div>
 </div>
 {% endblock content %}
