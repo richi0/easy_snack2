@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Easy-Snack Weekly Update</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <style type="text/css">
+      /* CLIENT-SPECIFIC STYLES */
+      body,
+      table,
+      td,
+      a {
+        -webkit-text-size-adjust: 100%;
+        -ms-text-size-adjust: 100%;
+      }
+      table,
+      td {
+        mso-table-lspace: 0pt;
+        mso-table-rspace: 0pt;
+      }
+      img {
+        -ms-interpolation-mode: bicubic;
+      }
+
+      /* RESET STYLES */
+      img {
+        border: 0;
+        height: auto;
+        line-height: 100%;
+        outline: none;
+        text-decoration: none;
+      }
+      table {
+        border-collapse: collapse !important;
+      }
+      body {
+        height: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        width: 100% !important;
+      }
+    </style>
+  </head>
+  <body style="margin: 0 !important; padding: 60px 0 60px 0 !important;">
+    <table
+      border="0"
+      cellspacing="0"
+      cellpadding="0"
+      role="presentation"
+      width="100%"
+    >
+      <tr>
+        <td style="font-size: 0;"></td>
+        <td
+          bdacolor="white"
+          width="600"
+          style="
+            border-radius: 4px;
+            color: black;
+            font-family: sans-serif;
+            font-size: 18px;
+            line-height: 28px;
+            padding: 40px 40px;
+          "
+        >
+          <h1
+            style="
+              color: seagreen;
+              font-size: 32px;
+              font-weight: bold;
+              line-height: 36px;
+              margin: 0 0 30px 0;
+              text-align: center;
+            "
+          >
+            Welcome to Sev and Amby's EASY-snack week in review!
+          </h1>
+          <p style="margin: 0 0 30px 0;">Hello {{ subscriber.name }},</p>
+          <p style="margin: 0 0 30px 0;">
+            Here's all our latest content for the week:
+          </p>
+          {% for article in articles %}
+          <p style="margin: 0 0 10px 0;">
+            <a
+              style="
+                display: block;
+                color: gray;
+                font-size: 12px;
+                margin: 0px 0px 0px 0px;
+              "
+              href="https://easy-snack.com{{ article.get_absolute_url }}"
+            >
+              {{ article.city.name }} | {{ article.country.name }}
+            </a>
+            <a
+              style="
+                color: seagreen;
+                font-weight: 700;
+                margin: 0px 0px 0px 0px;
+              "
+              href="https://easy-snack.com{{ article.get_absolute_url }}"
+            >
+              {{ article.title }}
+            </a>
+          </p>
+          {% endfor %}
+          <p style="margin: 50px 0 0 0; text-align: center;">
+            Had enough easy snacks? Unsubscribe
+            <a
+              style="color: seagreen;"
+              href="https://easy-snack.com{{ subscriber.get_unsubscribe_url }}"
+            >
+              here!
+            </a>
+          </p>
+        </td>
+        <td style="font-size: 0;"></td>
+      </tr>
+    </table>
+  </body>
+</html>

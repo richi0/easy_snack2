@@ -1,7 +1,0 @@
-{% extends "pages/_base.html" %} {% block content %} {% load static %}
-<div class="flex flex-col space-y-6 h-full justify-center items-center">
-  <p class="text-3xl">{{ text }}</p>
-  {% url 'blog_home' as blog_url %}
-  {% include "pages/components/link_button.html" with url=blog_url text="Go Back" %}
-</div>
-{% endblock %}

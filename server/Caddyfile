@@ -1,0 +1,22 @@
+www.localhost {
+    redir https://localhost{uri}
+}
+
+localhost {
+    reverse_proxy 127.0.0.1:7000
+    handle_path /static/* {
+        encode gzip
+        header Cache-Control max-age=5184000
+        file_server {
+            root /home/richie/code/python/easy_snack3/BE/staticfiles
+        }
+    }
+
+    handle_path /media/* {
+        encode gzip
+        header Cache-Control max-age=5184000
+        file_server {
+            root /home/richie/code/python/easy_snack3/BE/mediafiles
+        }
+    }
+}

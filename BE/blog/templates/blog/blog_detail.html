@@ -1,0 +1,52 @@
+{% extends 'pages/_base.html' %} {% load static %} {% block content %}
+<div class="p-8 rounded bg-white mb-6">
+  <p class="text-3xl text-center">{{ object.title }}</p>
+  <p class="text-center mb-10 text-gray-700">
+    by {{ object.author }} on {{ object.publish_on|date:"D d M Y" }}
+  </p>
+  {% include "blog/components/infos.html" %}
+  <p class="max-w-3xl ml-auto mr-auto">{{ object.preface|safe|linebreaksbr}}</p>
+  {% include "blog/components/image.html" with image=object %}
+  {% for data in object.get_text %}
+    {% if data.type_ == "paragraph" %}
+      {% if data.title %}
+        <p class="my-5 text-2xl">{{ data.title }}</p>
+      {% endif %}
+      <p class="max-w-3xl ml-auto mr-auto">{{ data.content|safe|linebreaksbr}}</p>
+    {% elif data.type_ == "image" %}
+      {% include "blog/components/image.html" with image=data %}
+    {% endif %}
+  {% endfor %}
+</div>
+<div class="flex justify-between max-w-sm mx-auto mt-10">
+    <b>Share:</b>
+    {% include "blog/components/share_buttons.html" %}
+</div>
+{% if object.google_map %}
+  <hr class="border-b border-2 bg-green-700 border-green-700 my-3">
+  <div class="mx-auto w-full h-80 my-5">
+    {{ object.google_map|safe }}
+  </div>
+  <hr class="border-b border-2 bg-green-700 border-green-700 my-3">
+{% endif %}
+<p class="contact-divider bg-primary my-5"></p>
+<div class="p-3 rounded bg-white mb-6">
+{% if object.comments.all %}
+  <p class="text-2xl mt-20 text-center">Comments</p>
+  {% for comment in object.comments.all %}
+    {% if comment.approved %}
+      <div class="border p-3 rounded my-5 max-w-2xl ml-auto mr-auto">
+        <p>
+          <b>by {{ comment.name }} on {{ comment.created_at|date:"D d M Y" }}</b>
+        </p>
+        <p>{{ comment.comment|linebreaksbr }}</p>
+      </div>
+    {% endif %}
+  {% endfor %}
+{% endif %}
+<p class="text-2xl mt-20 mb-5 text-center">Write a comment</p>
+  {% url 'blog_home' as blog_url %}
+  {% url 'create_comment' object.pk as action %}
+	{% include "forms/components/form.html" with action=action form=form %}
+</div>
+{% endblock content %}

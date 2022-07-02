@@ -1,0 +1,33 @@
+{% load static %}
+<div class="flex max-h-72 overflow-y-auto mb-10">
+  <img
+    id="header_image"
+    class="w-full object-cover"
+    src="{% static '/images/header_1.jpeg' %}"
+    alt="header"
+  />
+  <script>
+    let images = [
+      "{% static '/images/header_1.jpeg' %}",
+      "{% static '/images/header_2.jpeg' %}",
+      "{% static '/images/header_3.jpeg' %}",
+      "{% static '/images/header_4.jpeg' %}",
+      "{% static '/images/header_5.jpeg' %}",
+      "{% static '/images/header_6.jpeg' %}",
+    ]
+    let img = document.getElementById("header_image")
+    let counter = 1
+
+    document.addEventListener('DOMContentLoaded', function () {
+      setInterval(() => {
+          if (counter < images.length) {
+              img.src = images[counter]
+              counter++
+          }else {
+              counter = 1
+              img.src = images[0]
+          }
+      }, 5000)
+    })
+  </script>
+</div>

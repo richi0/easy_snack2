@@ -8,7 +8,7 @@ $host$ {
         encode gzip
         header Cache-Control max-age=5184000
         file_server {
-            root $root$/staticfiles
+            root $root$/BE/staticfiles
         }
     }
 
@@ -16,7 +16,7 @@ $host$ {
         encode gzip
         header Cache-Control max-age=5184000
         file_server {
-            root $root$/mediafiles
+            root $root$/BE/mediafiles
         }
     }
 }
