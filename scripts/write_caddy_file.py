@@ -3,7 +3,7 @@ from pathlib import Path
 from read_env import read_env
 
 ROOT = Path(__file__).parent.parent.resolve()
-ENV = Path(ROOT, 'BE', '.env.json')
+ENV = Path(ROOT, '.env.json')
 CADDY_TMPL = Path(ROOT, 'scripts', 'caddyfile.tmpl')
 
 def write_file(env_path: Path):

@@ -17,7 +17,7 @@ import json
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-ENV = Path(BASE_DIR, ".env.json")
+ENV = Path(BASE_DIR.parent, ".env.json")
 if ENV.exists():
     env = json.loads(ENV.read_bytes())
     for item in env.items():
@@ -55,7 +55,7 @@ INSTALLED_APPS = [
     "pages.apps.PagesConfig",
     "blog.apps.BlogConfig",
     "forms.apps.FormsConfig",
-    'storages',
+    'corsheaders',
 ]
 
 MIDDLEWARE = [
@@ -66,6 +66,7 @@ MIDDLEWARE = [
     "django.contrib.auth.middleware.AuthenticationMiddleware",
     "django.contrib.messages.middleware.MessageMiddleware",
     "django.middleware.clickjacking.XFrameOptionsMiddleware",
+    'corsheaders.middleware.CorsMiddleware',
 ]
 
 ROOT_URLCONF = "django_project.urls"
@@ -147,3 +148,8 @@ MEDIA_URL = "/media/"
 
 # Sites framework
 SITE_ID = 1
+
+CORS_ORIGIN_ALLOW_ALL = False
+CORS_ORIGIN_WHITELIST = (
+  'http://localhost:3000',
+)

@@ -1,4 +1,5 @@
 import json
+from django.http import HttpResponse
 from django.views.generic import TemplateView, View
 from django.shortcuts import redirect, render
 
@@ -81,3 +82,6 @@ class MapPageView(TemplateView):
 
 class DisclaimerPageView(TemplateView):
     template_name = "pages/disclaimer.html"
+
+def test1(request):
+    return HttpResponse('{"test1": "this is a test"}')

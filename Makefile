@@ -20,12 +20,19 @@ migrate:
 		python manage.py makemigrations ;\
 		python manage.py migrate ;\
 	)
-serve_dev:
+serve_be_dev:
 	(\
 		cd BE/ ;\
 		source .venv/bin/activate ;\
 		python manage.py collectstatic --noinput ;\
 		python manage.py runserver 0.0.0.0:7000 ;\
+		cd ../FE ;\
+		screen -d -m npm run dev ;\
+	)
+serve_fe_dev:
+	(\
+		cd FE/ ;\
+		npm run dev ;\
 	)
 serve_prod:
 	(\
