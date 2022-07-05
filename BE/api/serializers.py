@@ -1,7 +1,5 @@
 from rest_framework import serializers
 from blog.models import Article
-import json
-
 
 class ArticleListSerializer(serializers.ModelSerializer):
     class Meta:
@@ -29,7 +27,7 @@ class ArticleDetailSerializer(serializers.ModelSerializer):
     def get_content(self, obj):
         posts = [p.json() for p in obj.paragraphs.all()]
         images = [i.json() for i in obj.images.all()]
-        return json.dumps(sorted(posts + images, key=lambda i: i["order"]))
+        return sorted(posts + images, key=lambda i: i["order"])
 
     class Meta:
         model = Article
