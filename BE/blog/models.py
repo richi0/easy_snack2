@@ -78,6 +78,15 @@ class Paragraph(models.Model):
     )
     order = models.IntegerField(default=1)
 
+    def json(self):
+        return {
+            "type_": self.type_,
+            "title": self.title,
+            "content": self.content,
+            "article": self.article.id,
+            "order": self.order,
+        }
+
     def __str__(self):
         if self.title:
             return self.title
@@ -98,6 +107,15 @@ class Image(models.Model):
     )
     caption = models.CharField(max_length=200, blank=True, null=True, default="")
     order = models.IntegerField()
+
+    def json(self):
+        return {
+            "type_": self.type_,
+            "image": self.image.path,
+            "caption": self.caption,
+            "article": self.article.id,
+            "order": self.order,
+        }
 
     def __str__(self):
         if self.caption:

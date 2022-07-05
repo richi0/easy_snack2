@@ -18,6 +18,7 @@ urlpatterns = [
     # Local apps
     path("", include("blog.urls")),
     path("", include("pages.urls")),
+    path("api/", include("api.urls")),
     path("froms/", include("forms.urls")),
     # Sitemaps
     path(

@@ -51,11 +51,14 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",
     "django.contrib.sites",
     "django.contrib.sitemaps",
+    # Third party
+    'rest_framework',
+    'corsheaders',
     # Local
     "pages.apps.PagesConfig",
     "blog.apps.BlogConfig",
     "forms.apps.FormsConfig",
-    'corsheaders',
+    "api.apps.ApiConfig",
 ]
 
 MIDDLEWARE = [

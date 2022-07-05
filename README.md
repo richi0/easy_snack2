@@ -1,0 +1,2 @@
+TODO:
+Cleanup Python installs
