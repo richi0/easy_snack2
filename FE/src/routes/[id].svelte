@@ -1,20 +1,20 @@
 <script context="module">
 	import { API_PATH } from '$lib/constants.ts';
 	export async function load({ fetch, params }) {
-		const res_raw = await fetch(`${API_PATH}article/?p=${params.id}`);
-		const res = await res_raw.json();
-		if (res_raw.ok) {
+		const res = await fetch(`${API_PATH}article/?p=${params.id}`);
+		const body = await res.json();
+		if (res.ok) {
 			return {
 				props: {
-					results: res.results,
-					previous: res.previous,
-					next: res.next
+					results: body.results,
+					previous: body.previous,
+					next: body.next
 				}
 			};
 		}
 		return {
-			status: res_raw.status,
-			error: new Error('Could not fetch the guides')
+			status: res.status,
+			error: new Error('Could not fetch the articles')
 		};
 	}
 </script>
@@ -27,7 +27,6 @@
 	const getPage = (url) => {
 		if (url) {
 			const urlParams = new URLSearchParams(url.split('?')[1]);
-			console.log(urlParams.get('p'), next, url);
 			return urlParams.get('p') || 1;
 		}
 		return null;
@@ -41,14 +40,15 @@
 	{#each results as article}
 		<div>
 			{article.title}
+            <a sveltekit:prefetch href="/article/{article.id}">Details</a>
 		</div>
 	{/each}
 	<div>
 		{#if previousUrl}
-			<a href={`/${previousUrl}`}>Previous</a>
+			<a href=/{previousUrl}>Previous</a>
 		{/if}
 		{#if nextUrl}
-			<a href={`/${nextUrl}`}>Next</a>
+			<a href=/{nextUrl}>Next</a>
 		{/if}
 	</div>
 </div>
