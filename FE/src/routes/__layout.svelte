@@ -4,9 +4,9 @@
 </script>
 
 <Header />
-<main>
-	<slot />
-</main>
+<div class="content">
+<slot />
+</div>
 <Footer />
 
 <style global>
@@ -125,5 +125,32 @@
 	table {
 		border-collapse: collapse;
 		border-spacing: 0;
+	}
+
+	html {
+		min-height: 100vh;
+	}
+
+	body {
+		font-family: 'Edu NSW ACT Foundation', cursive;
+		display: flex;
+		flex-direction: column;
+		min-height: 100vh;
+		margin: 0;
+		line-height: normal;
+	}
+
+	.content {
+		display: flex;
+		flex-direction: column;
+		width: 100%;
+	}
+
+	a {
+		color: olivedrab;
+		text-decoration: none;
+	}
+	a:visited {
+		color: olivedrab;
 	}
 </style>

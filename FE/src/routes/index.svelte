@@ -3,13 +3,17 @@
 	import type { LoadFunction } from '$lib/typing';
 	export async function load({ fetch, params }: LoadFunction) {
 		const id = (params?.id && params.id) || 1;
-		return idFetch('article/', id, fetch, ['article']);
+		return idFetch('article/?p=', id, fetch, ['results', 'previous', 'next']);
 	}
 </script>
 
 <script lang="ts">
+    import Index from './[id].svelte'
 	import type { Article } from '$lib/typing';
-	export let article: Article;
+
+	export let results: Article[];
+	export let previous: string;
+	export let next: string;
 </script>
 
-<div>{article.title}</div>
+<Index {results} {previous} {next}/>
