@@ -4,15 +4,21 @@ export const idFetch = async (
 	url: string,
 	id: number,
 	fetch: (url: string) => Promise<Response>,
-	result: string[]
+	result: string[] | string
 ) => {
 	const res = await fetch(`${API_PATH}${url}${id}`);
 	const body = await res.json();
-	const resDict = Object.fromEntries(result.map((key) => [key, body[key]]));
 	if (res.ok) {
-		return {
-			props: { ...resDict }
-		};
+		if (typeof result === 'string') {
+			return {
+				props: Object.fromEntries([[result, body]])
+			};
+		} else {
+			const resDict = Object.fromEntries(result.map((key) => [key, body[key]]));
+			return {
+				props: { ...resDict }
+			};
+		}
 	}
 	return {
 		status: res.status,

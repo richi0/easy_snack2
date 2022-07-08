@@ -8,7 +8,8 @@
 </script>
 
 <script lang="ts">
-	import type { Article } from '$lib/typing';
+	import ArticleTeaser from '$lib/components/ArticleTeaser.svelte';
+import type { Article } from '$lib/typing';
 
 	export let results: Article[];
 	export let previous: string;
@@ -26,12 +27,12 @@
 	$: previousUrl = getPage(previous);
 </script>
 
-{#each results as article}
-	<div>
-		{article.title}
-		<a sveltekit:prefetch href="/article/{article.id}">Details</a>
-	</div>
-{/each}
+<div class="articles">
+	{#each results as article}
+		<ArticleTeaser {article} />
+	{/each}
+</div>
+
 <div>
 	{#if previousUrl}
 		<a href="/{previousUrl}">Previous</a>
@@ -40,3 +41,11 @@
 		<a href="/{nextUrl}">Next</a>
 	{/if}
 </div>
+
+<style>
+	.articles {
+		display: flex;
+		flex-direction: column;
+		gap: 20px;
+	}
+</style>

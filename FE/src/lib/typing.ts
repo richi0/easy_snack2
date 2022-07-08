@@ -10,7 +10,7 @@ export type Article = {
 	country?: string;
 	city?: string;
 	google_map?: string;
-	snacks?: string;
+	snacks?: number;
 	preface?: string;
 	publish_on?: string;
 };

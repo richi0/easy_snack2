@@ -3,7 +3,7 @@
 	import type { LoadFunction } from '$lib/typing';
 	export async function load({ fetch, params }: LoadFunction) {
 		const id = (params?.id && params.id) || 1;
-		return idFetch('article/', id, fetch, ['article']);
+		return idFetch('article/', id, fetch, 'article');
 	}
 </script>
 

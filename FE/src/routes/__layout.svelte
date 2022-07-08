@@ -138,6 +138,7 @@
 		min-height: 100vh;
 		margin: 0;
 		line-height: normal;
+		font-size: 18px;
 	}
 
 	.content {
