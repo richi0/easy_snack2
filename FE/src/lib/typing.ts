@@ -2,8 +2,8 @@ export type Article = {
 	content?: string;
 	id?: string;
 	author?: string;
-	title?: string;
-	image?: string;
+	title: string;
+	image: string;
 	caption?: string;
 	restaurant_name?: string;
 	cost?: string;

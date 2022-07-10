@@ -47,5 +47,7 @@ import type { Article } from '$lib/typing';
 		display: flex;
 		flex-direction: column;
 		gap: 20px;
+		padding-left: 10px;
+		padding-right: 10px;
 	}
 </style>
