@@ -132,7 +132,7 @@
 	}
 
 	body {
-		font-family: 'Edu NSW ACT Foundation', cursive;
+		font-family: 'Lato', sans-serif;
 		display: flex;
 		flex-direction: column;
 		min-height: 100vh;

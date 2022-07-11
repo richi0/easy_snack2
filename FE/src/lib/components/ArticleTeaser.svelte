@@ -7,57 +7,56 @@
 </script>
 
 <div class="card" on:click={() => goto(`/article/${article.id}/`)}>
-	<p class="title">{article.title}</p>
-	<div class="titleRow">
-		<p class="date">{article.publish_on}</p>
-		<Snacks number={article.snacks} height={20} />
-	</div>
 	<div class="image">
 		<Image src={article.image} alt={article.title} />
 	</div>
-	<p class="preface">{article.preface}</p>
+	<div class="authorRow">
+		<p class="author">by {article.author}</p>
+		<Snacks number={article.snacks} height={10} />
+	</div>
+	<p class="title">{article.title}</p>
 </div>
 
 <style>
 	.card {
-		box-shadow: 0 2px 3px 0 rgba(0, 0, 0, 0.2), 0 3px 5px 0 rgba(0, 0, 0, 0.19);
-		margin: 10px;
-		padding: 20px;
 		display: flex;
 		flex-direction: column;
-		max-width: 800px;
-		margin-left: auto;
-		margin-right: auto;
+		max-width: 350px;
 	}
 
-	.card:hover {
-		box-shadow: 0 4px 6px 0 rgba(0, 0, 0, 0.2), 0 10px 20px 0 rgba(0, 0, 0, 0.19);
-	}
-
-	.titleRow {
-		display: flex;
-		justify-content: space-between;
+	.card:hover .title {
+		color: #03a5fc;
 	}
 
 	.title {
-		font-size: 24px;
-		font-weight: 600;
+		font-size: 20px;
 		margin-bottom: 4px;
 	}
 
-	.date {
-		margin-bottom: 16px;
+	.authorRow {
+		display: flex;
+		justify-content: space-between;
+	}
+	.author {
+		font-size: 14px;
+		margin-bottom: 4px;
 	}
 
 	.image {
-		margin: 0px auto 8px;
-		width: 300px;
-		height: 200px;
+		width: 340px;
+		height: 350px;
 	}
-	@media (min-width: 600px) {
+
+	@media (min-width: 450px) {
+	.card {
+		display: flex;
+		flex-direction: column;
+		max-width: 200px;
+	}
 		.image {
-			width: 500px;
-			height: 400px;
+			margin: 0px auto 8px;
+			width: 200px;
+			height: 200px;
 		}
 	}
 </style>

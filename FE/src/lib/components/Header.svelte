@@ -39,10 +39,10 @@
 
 	.logo {
 		gap: 10px;
-		font-size: 24px;
+		font-size: 20px;
 		margin-right: auto;
 		align-items: center;
-    font-weight: 600;
+		font-weight: 600;
 	}
 
 	.mobile {
@@ -56,12 +56,13 @@
 	nav {
 		display: flex;
 		gap: 10px;
+		font-size: 14px;
 	}
 
 	@media (min-width: 600px) {
-    .logo {
-      font-size: 30px;
-    }
+		.logo {
+			font-size: 30px;
+		}
 
 		.mobile {
 			display: none;
