@@ -12,7 +12,7 @@
 		<p class="title">{article.title}</p>
 		<div class="authorRow">
 			<p class="author">by {article.author}</p>
-			<Snacks number={article.snacks} coverColor="#03a5fc" height={16} />
+			<Snacks number={article.snacks} coverColor="94cbe996" height={16} />
 		</div>
 		<p class="preface">
 			{article.preface}
@@ -28,7 +28,7 @@
 		display: flex;
 		flex-direction: column-reverse;
 		min-height: 400px;
-		background: #03a5fc;
+		background: #94cbe996;
 		justify-content: space-between;
 		padding: 20px;
 		gap: 20px;
