@@ -48,11 +48,12 @@
 	}
 
 	@media (min-width: 450px) {
-	.card {
-		display: flex;
-		flex-direction: column;
-		max-width: 200px;
-	}
+		.card {
+			display: flex;
+			flex-direction: column;
+			max-width: 200px;
+		}
+
 		.image {
 			margin: 0px auto 8px;
 			width: 200px;

@@ -61,9 +61,7 @@ import Button from '$lib/components/Button.svelte';
 		gap: 20px;
 		padding-left: 10px;
 		padding-right: 10px;
-		max-width: 900px;
 		justify-content: center;
-		margin: 0 auto;
 	}
 
 	.button {

@@ -1,4 +1,5 @@
-export const API_PATH = 'http://localhost:7000/api/';
+export const SERVER_PATH = 'http://localhost:7000';
+export const API_PATH = `${SERVER_PATH}/api/`;
 
 export const color = {
 	primary: '#03a5fc',

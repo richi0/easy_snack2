@@ -109,9 +109,10 @@ class Image(models.Model):
     order = models.IntegerField()
 
     def json(self):
+        print(self.image)
         return {
             "type_": self.type_,
-            "image": self.image.path,
+            "image": self.image.url,
             "caption": self.caption,
             "article": self.article.id,
             "order": self.order,

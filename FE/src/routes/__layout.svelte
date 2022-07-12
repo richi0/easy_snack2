@@ -144,7 +144,9 @@
 	.content {
 		display: flex;
 		flex-direction: column;
-		width: 100%;
+		max-width: 900px;
+		justify-content: center;
+		margin: 0 auto;
 	}
 
 	a {
