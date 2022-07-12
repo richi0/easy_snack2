@@ -150,10 +150,10 @@
 	}
 
 	a {
-		color: olivedrab;
+		color: black;
 		text-decoration: none;
 	}
 	a:visited {
-		color: olivedrab;
+		color: black;
 	}
 </style>

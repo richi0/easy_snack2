@@ -108,11 +108,10 @@ class Image(models.Model):
     caption = models.CharField(max_length=200, blank=True, null=True, default="")
     order = models.IntegerField()
 
-    def json(self):
-        print(self.image)
+    def json(self, request):
         return {
             "type_": self.type_,
-            "image": self.image.url,
+            "image": request.build_absolute_uri(self.image.url),
             "caption": self.caption,
             "article": self.article.id,
             "order": self.order,

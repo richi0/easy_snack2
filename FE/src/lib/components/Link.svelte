@@ -11,7 +11,7 @@
     }
 </script>
 
-<a href={url} style={style()} class={(active && 'active') || null}>
+<a sveltekit:prefetch href={url} style={style()} class={(active && 'active') || null}>
 	<slot />
 </a>
 

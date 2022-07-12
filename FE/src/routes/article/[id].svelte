@@ -11,13 +11,29 @@
 	import TextParagraph from '$lib/components/TextParagraph.svelte';
 	import ImageParagraph from '$lib/components/ImageParagraph.svelte';
 	import type { Article } from '$lib/typing';
+	import Snacks from '$lib/components/Snacks.svelte';
+	import { ensureImageParagraph, ensureTextParagraph } from '$lib/ensure';
 
 	export let article: Article;
 </script>
 
 <div class="article">
-	{article.title}
-	{#if article.content}
+	<p class="title">
+		{article.title}
+	</p>
+	<p class="date">
+		{article.publish_on} by {article.author}
+	</p>
+	<span class="snack">
+		<Snacks number={article.snacks} reverse height={30} />
+	</span>
+	<span class="data">
+		USD {article.cost} | {article.country} | {article.city}
+	</span>
+	<div class="content">
+		<TextParagraph paragraph={ensureTextParagraph(article.preface)} />
+		<ImageParagraph paragraph={ensureImageParagraph(article.image, article.caption)} />
+
 		{#each article.content as paragraph}
 			{#if paragraph.type_ === 'paragraph'}
 				<TextParagraph {paragraph} />
@@ -26,7 +42,7 @@
 				<ImageParagraph {paragraph} />
 			{/if}
 		{/each}
-	{/if}
+	</div>
 </div>
 
 <style>
@@ -34,7 +50,43 @@
 		display: flex;
 		justify-content: center;
 		flex-direction: column;
+		padding: 10px 20px 10px;
+	}
+
+	.title {
+		display: flex;
+		flex-direction: column;
+		font-size: 24px;
+		font-weight: 600;
+		margin-bottom: 8px;
+	}
+
+	.snack {
+		margin-right: auto;
+		margin-bottom: 20px;
+	}
+
+	.date {
+		font-size: 14px;
+		font-weight: 600;
+		color: #03a5fc;
+		margin-bottom: 8px;
+	}
+
+	.content {
+		display: flex;
+		justify-content: center;
+		flex-direction: column;
 		gap: 20px;
-		padding-bottom: 40px;
+	}
+
+	@media (min-width: 600px) {
+		.title {
+			flex-direction: row;
+			justify-content: space-between;
+			font-size: 24px;
+			font-weight: 600;
+			margin-bottom: 8px;
+		}
 	}
 </style>

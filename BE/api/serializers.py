@@ -25,8 +25,9 @@ class ArticleDetailSerializer(serializers.ModelSerializer):
     content = serializers.SerializerMethodField("get_content")
 
     def get_content(self, obj):
+        request = self.context.get('request')
         posts = [p.json() for p in obj.paragraphs.all()]
-        images = [i.json() for i in obj.images.all()]
+        images = [i.json(request) for i in obj.images.all()]
         return sorted(posts + images, key=lambda i: i["order"])
 
     class Meta:

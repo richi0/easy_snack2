@@ -1,12 +1,11 @@
 <script lang="ts">
 	import type { Article } from '$lib/typing';
-	import { goto } from '$app/navigation';
 	import Snacks from './Snacks.svelte';
 	import Image from './Image.svelte';
 	export let article: Article;
 </script>
 
-<div class="card" on:click={() => goto(`/article/${article.id}/`)}>
+<a sveltekit:prefetch href="/article/{article.id}/" class="card">
 	<div class="image">
 		<Image src={article.image} alt={article.title} />
 	</div>
@@ -15,7 +14,7 @@
 		<Snacks number={article.snacks} height={10} />
 	</div>
 	<p class="title">{article.title}</p>
-</div>
+</a>
 
 <style>
 	.card {

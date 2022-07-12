@@ -9,7 +9,7 @@
 <div class="paragraph">
 	<div class="image">
 		<Image
-			src={`${SERVER_PATH}${paragraph.image}`}
+			src={paragraph.image}
 			alt={(paragraph.caption && paragraph.caption) || ''}
 		/>
 	</div>
@@ -33,7 +33,7 @@
 
 	.caption {
 		font-size: 16px;
-		background: #94cbe996;
+		background: #b8dff5;
 		padding: 10px;
 	}
 

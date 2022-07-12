@@ -1,5 +1,5 @@
 export type Article = {
-	content?: (TextParagraph|ImageParagraph)[] | [];
+	content: (TextParagraph|ImageParagraph)[] | [];
 	id?: string;
 	author?: string;
 	title: string;
@@ -25,15 +25,15 @@ export type Params = {
 }
 
 export type TextParagraph = {
-	article: number;
+	article?: number;
 	content: string;
-	order: number;
+	order?: number;
 	title?: string;
 	type_: "paragraph";
 }
 
 export type ImageParagraph = {
-	article: number;
+	article?: number;
 	image: string;
 	caption?: string;
 	type_: "image";

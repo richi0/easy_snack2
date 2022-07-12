@@ -6,13 +6,13 @@
 	export let article: Article;
 </script>
 
-<div class="card" on:click={() => goto(`/article/${article.id}/`)}>
+<a sveltekit:prefetch href="/article/{article.id}/" class="card">
 	<div>
 		<p>Latest Snack</p>
 		<p class="title">{article.title}</p>
 		<div class="authorRow">
 			<p class="author">by {article.author}</p>
-			<Snacks number={article.snacks} coverColor="94cbe996" height={16} />
+			<Snacks number={article.snacks} coverColor="#b8dff5" height={16} />
 		</div>
 		<p class="preface">
 			{article.preface}
@@ -21,14 +21,14 @@
 	<div class="image">
 		<Image src={article.image} alt={article.title} />
 	</div>
-</div>
+</a>
 
 <style>
 	.card {
 		display: flex;
 		flex-direction: column-reverse;
 		min-height: 400px;
-		background: #94cbe996;
+		background: #b8dff5;
 		justify-content: space-between;
 		padding: 20px;
 		gap: 20px;

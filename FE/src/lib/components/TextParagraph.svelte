@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { page } from '$app/stores';
 	import type { TextParagraph } from '$lib/typing';
 
 	export let paragraph: TextParagraph;
@@ -13,13 +12,13 @@
 </div>
 
 <style>
-    .title {
-        font-size: 20px;
-        font-weight: 600;
-        margin-bottom: 8px;
-    }
+	.title {
+		font-size: 20px;
+		font-weight: 600;
+		margin-bottom: 8px;
+	}
 
-    .content {
-        font-size: 20px;
-    }
+	.content {
+		font-size: 20px;
+	}
 </style>
