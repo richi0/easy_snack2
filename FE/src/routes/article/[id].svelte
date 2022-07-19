@@ -13,7 +13,7 @@
 	import type { Article } from '$lib/typing';
 	import Snacks from '$lib/components/Snacks.svelte';
 	import { ensureImageParagraph, ensureTextParagraph } from '$lib/ensure';
-import Stats from '$lib/components/Stats.svelte';
+	import Stats from '$lib/components/Stats.svelte';
 
 	export let article: Article;
 </script>

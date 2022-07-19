@@ -1,5 +1,6 @@
 from rest_framework import serializers
-from blog.models import Article
+from blog.models import Article, City
+
 
 class ArticleListSerializer(serializers.ModelSerializer):
     class Meta:
@@ -27,7 +28,7 @@ class ArticleDetailSerializer(serializers.ModelSerializer):
     country_name = serializers.SerializerMethodField("get_country")
 
     def get_content(self, obj):
-        request = self.context.get('request')
+        request = self.context.get("request")
         posts = [p.json() for p in obj.paragraphs.all()]
         images = [i.json(request) for i in obj.images.all()]
         return sorted(posts + images, key=lambda i: i["order"])
@@ -58,3 +59,37 @@ class ArticleDetailSerializer(serializers.ModelSerializer):
             "preface",
             "publish_on",
         )
+
+
+class CityListSerializer(serializers.ModelSerializer):
+    country_name = serializers.SerializerMethodField("get_country")
+    posts = serializers.SerializerMethodField("get_posts")
+
+    def get_country(self, obj):
+        return obj.country.name
+
+    def get_posts(self, obj):
+        return len(obj.country.get_posts())
+
+    class Meta:
+        model = City
+        fields = (
+            "id",
+            "image",
+            "name",
+            "description",
+            "country",
+            "country_name",
+            "posts",
+        )
+
+
+class CityDetailSerializer(serializers.ModelSerializer):
+    country_name = serializers.SerializerMethodField("get_country")
+
+    def get_country(self, obj):
+        return obj.country.name
+
+    class Meta:
+        model = City
+        fields = ("id", "image", "name", "description", "country", "country_name")

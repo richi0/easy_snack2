@@ -1,5 +1,5 @@
 import datetime
-from blog.models import Article
+from blog.models import Article, City
 from rest_framework import pagination, generics
 
 from .serializers import *
@@ -23,3 +23,12 @@ class ArticleList(generics.ListAPIView):
 class ArticleDetail(generics.RetrieveAPIView):
     queryset = Article.objects.all()
     serializer_class = ArticleDetailSerializer
+
+class CityList(generics.ListAPIView):
+    queryset = City.objects.all()
+    serializer_class = CityListSerializer
+
+
+class CityDetail(generics.RetrieveAPIView):
+    queryset = City.objects.all()
+    serializer_class = CityListSerializer

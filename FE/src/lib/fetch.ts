@@ -6,7 +6,7 @@ export const idFetch = async (
 	fetch: (url: string) => Promise<Response>,
 	result: string[] | string
 ) => {
-	const res = await fetch(`${API_PATH}${url}${id}`);
+	const res = await fetch(`${API_PATH}${url}${id != -1 && id || ''}`);
 	const body = await res.json();
 	if (res.ok) {
 		if (typeof result === 'string') {

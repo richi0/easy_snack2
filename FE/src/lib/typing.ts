@@ -1,6 +1,6 @@
 export type Article = {
 	content: (TextParagraph|ImageParagraph)[] | [];
-	id?: string;
+	id: string;
 	author?: string;
 	title: string;
 	image: string;
@@ -40,3 +40,13 @@ export type ImageParagraph = {
 	caption?: string;
 	type_: "image";
 }
+
+export type City = {
+	id: number;
+	country: string;
+	country_name: string;
+	image: string;
+	name: string;
+	posts: number;
+	description: number;
+};
