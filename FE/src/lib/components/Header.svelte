@@ -19,7 +19,10 @@
 		</Link>
 	</div>
 	<nav>
-		<Link active={$page.routeId === '[id]' || $page.routeId === ''} url={'/'}>Blog</Link>
+		<Link
+			active={$page.routeId === '[id]' || $page.routeId === '' || $page.routeId === 'article/[id]'}
+			url={'/'}>Blog</Link
+		>
 		<Link active={$page.routeId === 'map'} url={'/map'}>Map</Link>
 		<Link active={$page.routeId === 'country'} url={'/country'}>Country</Link>
 		<Link active={$page.routeId === 'city'} url={'/city'}>City</Link>

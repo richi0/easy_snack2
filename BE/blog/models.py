@@ -144,6 +144,14 @@ class City(models.Model):
         all_articles = self.get_posts()
         return any([i.is_published for i in all_articles])
 
+    def json(self):
+        return {
+            "name": self.name,
+            "image": self.image,
+            "description": self.description,
+            "country": self.country,
+        }
+
     def __str__(self):
         return self.name
 
@@ -170,6 +178,13 @@ class Country(models.Model):
     def is_in_published_article(self):
         all_articles = self.get_posts()
         return any([i.is_published for i in all_articles])
+
+    def json(self):
+        return {
+            "name": self.name,
+            "image": self.image,
+            "description": self.description,
+        }
 
     def __str__(self):
         return self.name

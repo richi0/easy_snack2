@@ -13,23 +13,26 @@
 	import type { Article } from '$lib/typing';
 	import Snacks from '$lib/components/Snacks.svelte';
 	import { ensureImageParagraph, ensureTextParagraph } from '$lib/ensure';
+import Stats from '$lib/components/Stats.svelte';
 
 	export let article: Article;
 </script>
 
 <div class="article">
-	<p class="title">
-		{article.title}
-	</p>
-	<p class="date">
-		{article.publish_on} by {article.author}
-	</p>
-	<span class="snack">
-		<Snacks number={article.snacks} reverse height={30} />
-	</span>
-	<span class="data">
-		USD {article.cost} | {article.country} | {article.city}
-	</span>
+	<div class="titleRow">
+		<div>
+			<p class="title">
+				{article.title}
+			</p>
+			<p class="date">
+				{article.publish_on} by {article.author}
+			</p>
+		</div>
+		<span class="snack">
+			<Snacks number={article.snacks} reverse height={30} />
+		</span>
+	</div>
+	<Stats {article} />
 	<div class="content">
 		<TextParagraph paragraph={ensureTextParagraph(article.preface)} />
 		<ImageParagraph paragraph={ensureImageParagraph(article.image, article.caption)} />
@@ -51,6 +54,13 @@
 		justify-content: center;
 		flex-direction: column;
 		padding: 10px 20px 10px;
+	}
+
+	.titleRow {
+		display: flex;
+		flex-direction: column;
+		justify-content: space-between;
+		width: 100%;
 	}
 
 	.title {
@@ -81,12 +91,22 @@
 	}
 
 	@media (min-width: 600px) {
+		.titleRow {
+			flex-direction: row;
+		}
+
 		.title {
 			flex-direction: row;
 			justify-content: space-between;
 			font-size: 24px;
 			font-weight: 600;
 			margin-bottom: 8px;
+		}
+
+		.snack {
+			margin-left: auto;
+			margin-right: 0;
+			margin-bottom: 20px;
 		}
 	}
 </style>

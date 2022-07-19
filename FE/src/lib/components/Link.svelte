@@ -1,6 +1,6 @@
 <script lang="ts">
 	import { color } from '$lib/constants';
-	export let active: boolean;
+	export let active: boolean = false;
 	export let url: string;
 	export let linkColor: string = color.primary;
     

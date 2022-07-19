@@ -6,9 +6,11 @@ export type Article = {
 	image: string;
 	caption?: string;
 	restaurant_name?: string;
-	cost?: string;
-	country?: string;
-	city?: string;
+	cost: string;
+	country: string;
+	country_name: string;
+	city: string;
+	city_name: string;
 	google_map?: string;
 	snacks?: number;
 	preface?: string;
