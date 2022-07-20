@@ -25,12 +25,12 @@
 		>
 		<Link active={$page.routeId === 'map'} url={'/map'}>Map</Link>
 		<Link active={$page.routeId === 'country'} url={'/country'}>Country</Link>
-		<Link active={$page.routeId === 'city'} url={'/city'}>City</Link>
+		<Link active={$page.routeId === 'city'|| $page.routeId === 'city/[id]'} url={'/city'}>City</Link>
 		<Link active={$page.routeId === 'about'} url={'/about'}>About</Link>
 	</nav>
 </header>
 
-<style>
+<style lang="scss">
 	header {
 		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 		margin-bottom: 40px;

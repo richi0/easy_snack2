@@ -19,13 +19,13 @@
 	</TextIcon>
 </div>
 
-<style>
+<style lang="scss">
     div {
         display: flex;
         gap: 10px;
         flex-direction: column;
         align-items: center;
-        border: 1px solid #03a5fc;
+        border: 1px solid $primary;
         padding: 16px;
         margin: 20px 0;
         font-weight: 600;
