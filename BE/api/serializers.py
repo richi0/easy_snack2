@@ -93,3 +93,36 @@ class CityDetailSerializer(serializers.ModelSerializer):
     class Meta:
         model = City
         fields = ("id", "image", "name", "description", "country", "country_name")
+
+class CountryListSerializer(serializers.ModelSerializer):
+    posts = serializers.SerializerMethodField("get_posts")
+
+    def get_posts(self, obj):
+        return len(obj.get_posts())
+
+    class Meta:
+        model = City
+        fields = (
+            "id",
+            "image",
+            "name",
+            "description",
+            "posts",
+        )
+
+
+class CountryDetailSerializer(serializers.ModelSerializer):
+    posts = serializers.SerializerMethodField("get_posts")
+
+    def get_posts(self, obj):
+        return len(obj.get_posts())
+
+    class Meta:
+        model = City
+        fields = (
+            "id",
+            "image",
+            "name",
+            "description",
+            "posts",
+        )

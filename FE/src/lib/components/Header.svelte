@@ -24,8 +24,8 @@
 			url={'/'}>Blog</Link
 		>
 		<Link active={$page.routeId === 'map'} url={'/map'}>Map</Link>
-		<Link active={$page.routeId === 'country'} url={'/country'}>Country</Link>
-		<Link active={$page.routeId === 'city'|| $page.routeId === 'city/[id]'} url={'/city'}>City</Link>
+		<Link active={$page.routeId === 'country' || $page.routeId === 'country/[id]'} url={'/country'}>Countries</Link>
+		<Link active={$page.routeId === 'city' || $page.routeId === 'city/[id]'} url={'/city'}>Cities</Link>
 		<Link active={$page.routeId === 'about'} url={'/about'}>About</Link>
 	</nav>
 </header>

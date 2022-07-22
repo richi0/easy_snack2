@@ -8,3 +8,9 @@
 	<slot />
 </div>
 <Footer />
+
+<style>
+	.content {
+		margin-bottom: 40px;
+	}
+</style>

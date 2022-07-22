@@ -50,3 +50,13 @@ export type City = {
 	posts: number;
 	description: number;
 };
+
+export type Country = {
+	id: number;
+	country: string;
+	country_name: string;
+	image: string;
+	name: string;
+	posts: number;
+	description: number;
+};
