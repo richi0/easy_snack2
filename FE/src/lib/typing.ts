@@ -49,14 +49,14 @@ export type City = {
 	name: string;
 	posts: number;
 	description: number;
+	articles: Article[];
 };
 
 export type Country = {
 	id: number;
-	country: string;
-	country_name: string;
 	image: string;
 	name: string;
 	posts: number;
 	description: number;
+	cities: City[]
 };

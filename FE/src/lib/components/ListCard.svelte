@@ -5,7 +5,7 @@
 	<div class="subtitle">
 		<slot name="subtitle"></slot>
 	</div>
-	<span>
+	<span class="text">
 		<slot name="text"></slot>
 	</span>
 </div>
@@ -25,7 +25,7 @@
         font-weight: 600;
     }
 
-    text {
+    .text {
         font-size: 15px;
     }
 </style>

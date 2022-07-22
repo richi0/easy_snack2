@@ -27,11 +27,8 @@
 	{/each}
 </div>
 
-<style>
+<style lang="scss">
 	.list {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 20px;
-		justify-content: center;
+		@include default-list
 	}
 </style>

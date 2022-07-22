@@ -25,12 +25,8 @@ import Link from '$lib/components/Link.svelte';
 	{/each}
 </div>
 
-<style>
+<style lang="scss">
 	.list {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 20px;
-		justify-content: center;
-		margin-bottom: 40px;
+		@include default-list
 	}
 </style>

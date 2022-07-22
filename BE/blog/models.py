@@ -61,6 +61,19 @@ class Article(models.Model):
         else:
             return False
 
+    def json(self):
+        return {
+            "id": self.id,
+            "title": self.title,
+            "content": "",
+            "image": "",
+            "cost": "",
+            "country": "",
+            "country_name": "",
+            "city": "",
+            "city_name": "",
+        }
+
     @property
     def is_published(self):
         return datetime.date.today() >= self.publish_on
@@ -146,10 +159,13 @@ class City(models.Model):
 
     def json(self):
         return {
+            "id": self.id,
             "name": self.name,
-            "image": self.image,
+            "image": self.image.url,
             "description": self.description,
-            "country": self.country,
+            "country": self.country.name,
+            "posts": len(self.get_posts()),
+            "articles": [i.json() for i in self.get_posts()]
         }
 
     def __str__(self):

@@ -8,7 +8,38 @@
 </script>
 
 <script lang="ts">
+	import ListCard from '$lib/components/ListCard.svelte';
+	import Link from '$lib/components/Link.svelte';
+	import Image from '$lib/components/Image.svelte';
+
 	export let city: City;
 </script>
 
-<p>{city.name}</p>
+<p class="title">{city.name}</p>
+<Image src={city.image} alt={city.name} />
+<p class="description">{city.description}</p>
+
+<div class="list">
+	{#each city.articles as article}
+		<ListCard>
+			<Link slot="title" url={`/article/${article.id}`}>{article.title}</Link>
+		</ListCard>
+	{/each}
+</div>
+
+<style lang="scss">
+	.title {
+		@include t1;
+		text-align: center;
+		margin-bottom: 40px;
+	}
+
+	.description {
+		margin-top: 40px;
+	}
+
+	.list {
+		@include default-list;
+		margin-top: 40px;
+	}
+</style>

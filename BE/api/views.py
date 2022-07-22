@@ -31,7 +31,7 @@ class CityList(generics.ListAPIView):
 
 class CityDetail(generics.RetrieveAPIView):
     queryset = City.objects.all()
-    serializer_class = CityListSerializer
+    serializer_class = CityDetailSerializer
 
 class CountryList(generics.ListAPIView):
     queryset = Country.objects.all()
@@ -40,4 +40,4 @@ class CountryList(generics.ListAPIView):
 
 class CountryDetail(generics.RetrieveAPIView):
     queryset = Country.objects.all()
-    serializer_class = CountryListSerializer
+    serializer_class = CountryDetailSerializer

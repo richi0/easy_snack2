@@ -1,0 +1,62 @@
+@mixin t {
+	font-family: 'Lato', sans-serif;
+	font-weight: 600;
+	color: $black;
+}
+
+@mixin l {
+	font-family: 'Lato', sans-serif;
+	font-weight: 400;
+	color: $primary;
+}
+
+@mixin i {
+	font-family: 'Lato', sans-serif;
+	font-weight: 400;
+	color: $grey;
+}
+
+@mixin t1 {
+	@include t;
+	font-size: 24px;
+}
+
+@mixin t2 {
+	@include t;
+	font-size: 18px;
+}
+
+@mixin t3 {
+	@include t;
+	font-size: 12px;
+}
+
+@mixin l1 {
+	@include l;
+	font-size: 24px;
+}
+
+@mixin l2 {
+	@include l;
+	font-size: 18px;
+}
+
+@mixin l3 {
+	@include l;
+	font-size: 12px;
+}
+
+@mixin i1 {
+	@include i;
+	font-size: 18px;
+}
+
+@mixin i2 {
+	@include i;
+	font-size: 14px;
+}
+
+@mixin i3 {
+	@include i;
+	font-size: 10px;
+}

@@ -14,6 +14,7 @@
 	import Snacks from '$lib/components/Snacks.svelte';
 	import { ensureImageParagraph, ensureTextParagraph } from '$lib/ensure';
 	import Stats from '$lib/components/Stats.svelte';
+import Divider from '$lib/components/Divider.svelte';
 
 	export let article: Article;
 </script>
@@ -46,6 +47,11 @@
 			{/if}
 		{/each}
 	</div>
+	<Divider />
+	<div class="map">
+		{@html article.google_map}
+	</div>
+	<Divider />
 </div>
 
 <style>
@@ -88,6 +94,11 @@
 		justify-content: center;
 		flex-direction: column;
 		gap: 20px;
+	}
+
+	.map {
+		width: 100%;
+		height: 400px;
 	}
 
 	@media (min-width: 600px) {
