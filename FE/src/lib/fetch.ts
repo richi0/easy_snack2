@@ -6,7 +6,7 @@ export const idFetch = async (
 	fetch: (url: string) => Promise<Response>,
 	result: string[] | string
 ) => {
-	const res = await fetch(`${API_PATH}${url}${id != -1 && id || ''}`);
+	const res = await fetch(`${API_PATH}${url}${(id != -1 && id) || ''}`);
 	const body = await res.json();
 	if (res.ok) {
 		if (typeof result === 'string') {
@@ -24,4 +24,20 @@ export const idFetch = async (
 		status: res.status,
 		error: new Error('Could not fetch the articles')
 	};
+};
+
+export const post = async (url: string, payload: any) => {
+	const res = await fetch(url, {
+		method: 'POST',
+		headers: {
+			'Content-Type': 'application/json'
+		},
+		body: JSON.stringify(payload)
+	});
+
+	if (res.ok) {
+		return true;
+	}
+
+	return false;
 };

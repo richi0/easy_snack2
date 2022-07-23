@@ -14,7 +14,8 @@
 	import Snacks from '$lib/components/Snacks.svelte';
 	import { ensureImageParagraph, ensureTextParagraph } from '$lib/ensure';
 	import Stats from '$lib/components/Stats.svelte';
-import Divider from '$lib/components/Divider.svelte';
+	import Divider from '$lib/components/Divider.svelte';
+	import CommentForm from '$lib/components/CommentForm.svelte';
 
 	export let article: Article;
 </script>
@@ -52,6 +53,7 @@ import Divider from '$lib/components/Divider.svelte';
 		{@html article.google_map}
 	</div>
 	<Divider />
+	<CommentForm id={article.id} redirectUrl="/"/>
 </div>
 
 <style>

@@ -1,5 +1,6 @@
 from rest_framework import serializers
-from blog.models import Article, City
+from forms.models import Comment
+from blog.models import Article, City, Country
 
 
 class ArticleListSerializer(serializers.ModelSerializer):
@@ -88,7 +89,6 @@ class CityDetailSerializer(serializers.ModelSerializer):
     country_name = serializers.SerializerMethodField("get_country")
     articles = serializers.SerializerMethodField("get_articles")
 
-
     def get_country(self, obj):
         return obj.country.name
 
@@ -97,7 +97,16 @@ class CityDetailSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = City
-        fields = ("id", "image", "name", "description", "country", "country_name", "articles")
+        fields = (
+            "id",
+            "image",
+            "name",
+            "description",
+            "country",
+            "country_name",
+            "articles",
+        )
+
 
 class CountryListSerializer(serializers.ModelSerializer):
     posts = serializers.SerializerMethodField("get_posts")
@@ -106,7 +115,7 @@ class CountryListSerializer(serializers.ModelSerializer):
         return len(obj.get_posts())
 
     class Meta:
-        model = City
+        model = Country
         fields = (
             "id",
             "image",
@@ -123,11 +132,23 @@ class CountryDetailSerializer(serializers.ModelSerializer):
         return [i.json() for i in obj.get_cities()]
 
     class Meta:
-        model = City
+        model = Country
         fields = (
             "id",
             "image",
             "name",
             "description",
             "cities",
+        )
+
+
+class CommentSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Comment
+        fields = (
+            "id",
+            "name",
+            "email",
+            "comment",
+            "article",
         )

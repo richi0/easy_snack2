@@ -41,3 +41,6 @@ class CountryList(generics.ListAPIView):
 class CountryDetail(generics.RetrieveAPIView):
     queryset = Country.objects.all()
     serializer_class = CountryDetailSerializer
+
+class CommentCreate(generics.CreateAPIView):
+    serializer_class = CommentSerializer

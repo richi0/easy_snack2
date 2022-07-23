@@ -8,4 +8,5 @@ urlpatterns = [
     path('city/<int:pk>/', CityDetail.as_view(), name='api_city_detail'),
     path('country/', CountryList.as_view(), name='api_country_list'),
     path('country/<int:pk>/', CountryDetail.as_view(), name='api_country_detail'),
+    path('comment/', CommentCreate.as_view(), name='api_comment_create'),
 ]

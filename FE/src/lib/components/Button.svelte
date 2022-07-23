@@ -1,9 +1,9 @@
 <script lang="ts">
 	export let type = 'primary';
-	export let click: () => any;
+	export let click: (e: any) => void;
 </script>
 
-<button on:click={click} class={type}>
+<button on:click|preventDefault={click} class={type}>
 	<slot />
 </button>
 

@@ -16,6 +16,12 @@
 </script>
 
 <p class="title">{city.name}</p>
+<div class="country">
+	<span>
+		Country:
+		<Link url={`/country/${city.country}`}>{city.country_name}</Link>
+	</span>
+</div>
 <Image src={city.image} alt={city.name} />
 <p class="description">{city.description}</p>
 
@@ -30,6 +36,11 @@
 <style lang="scss">
 	.title {
 		@include t1;
+		text-align: center;
+		margin-bottom: 16px;
+	}
+
+	.country {
 		text-align: center;
 		margin-bottom: 40px;
 	}
